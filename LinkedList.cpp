@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
 #include "Random.h"
 #include "LinkedList.h"
 
