@@ -7,35 +7,17 @@ struct edge
 };
 class Graph
 {
-private:
+protected:
 	static const int kMaxVertices =100;
 	edge *edges[kMaxVertices];
-	int degree[kMaxVertices],entryTime[kMaxVertices],exitTime[kMaxVertices],treeOutDegree[kMaxVertices],reachableAncestor[kMaxVertices];
-	int numVertices,numEdges,time;
-	bool directed,finished;
-	bool processed[kMaxVertices];
-	bool discovered[kMaxVertices];
-	int parent[kMaxVertices];
+	int degree[kMaxVertices];
+	int numVertices,numEdges;
+	bool directed,finished,weighted;
+	
 public:
-	enum Classification
-	{
-		TREE,
-		BACK,
-		FORWARD,
-		CROSS,
-		UNDEFINED
-	};
-	Graph(bool directed);
+	Graph(bool directed,bool weighted);
 	void readGraph(const char* fileName);
-	void insertEdge(int x,int y,bool directed);
+	void insertEdge(int x,int y,int w,bool directed);
 	void printGraph();
-	void initializeSearch();
-	void findPath(int start,int end);
-	void bfs(int start);
-	void dfs(int start);
-	void processVertexEarly(int v);
-	void processVertexLate(int v);
-	void processEdge(int x,int y);
-	Classification edgeClassification(int x, int y);
 };
 #endif
